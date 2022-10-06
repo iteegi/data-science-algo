@@ -35,4 +35,5 @@ def data_correlation_plot(df: DataFrame, columns: List[str], y_column: str):
                 ax=area
             )
         i += 1
+    plt.tight_layout()
     plt.show()
