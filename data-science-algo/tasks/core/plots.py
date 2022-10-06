@@ -20,12 +20,10 @@ def data_correlation_plot(df: DataFrame, columns: List[str], y_column: str):
 
     rows = int(ceil(len(columns) / 4))
     fig = plt.figure(figsize=(12, rows*3))
-    i = 1
-    for column in columns:
+    for i, column in enumerate(columns):
         type_ = str(df[column].dtypes)
         if type_[:3] == "int" or type_[:5] == "float":
-            area = fig.add_subplot(rows, 4, i)
-
+            area = fig.add_subplot(rows, 4, i+1)
             DataFrame(
                 df,
                 columns=[y_column, column]
@@ -34,6 +32,5 @@ def data_correlation_plot(df: DataFrame, columns: List[str], y_column: str):
                 y=y_column,
                 ax=area
             )
-        i += 1
     plt.tight_layout()
     plt.show()
